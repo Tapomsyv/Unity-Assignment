@@ -119,6 +119,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &46174200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5226543248201106102, guid: d05c0271dad70b243bcb3634f561f85c,
+    type: 3}
+  m_PrefabInstance: {fileID: 108849825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &90994743
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +252,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 867457835}
     m_Modifications:
     - target: {fileID: -5455544248788724216, guid: d05c0271dad70b243bcb3634f561f85c,
         type: 3}
@@ -276,12 +282,12 @@ PrefabInstance:
     - target: {fileID: 5226543248201106102, guid: d05c0271dad70b243bcb3634f561f85c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000023841858
+      value: -1.3614397
       objectReference: {fileID: 0}
     - target: {fileID: 5226543248201106102, guid: d05c0271dad70b243bcb3634f561f85c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.387653
+      value: -0.38765335
       objectReference: {fileID: 0}
     - target: {fileID: 5226543248201106102, guid: d05c0271dad70b243bcb3634f561f85c,
         type: 3}
@@ -1438,6 +1444,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Id: 094023fd-6a0f-491e-b88d-89fb5ccdddd4
+--- !u!4 &867457835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4704405588285616905, guid: e4a50de6a5ecbc34f98897c368cb9244,
+    type: 3}
+  m_PrefabInstance: {fileID: 2905465687380952189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1154987517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,6 +2619,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5841889315148216310, guid: e4a50de6a5ecbc34f98897c368cb9244,
+        type: 3}
+      propertyPath: m_CameraYOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841889315148216310, guid: e4a50de6a5ecbc34f98897c368cb9244,
+        type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6032506675228415420, guid: e4a50de6a5ecbc34f98897c368cb9244,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2900,7 +2922,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 254093147516148453, guid: e4a50de6a5ecbc34f98897c368cb9244, type: 3}
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4704405588285616905, guid: e4a50de6a5ecbc34f98897c368cb9244,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 46174200}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4a50de6a5ecbc34f98897c368cb9244, type: 3}
 --- !u!4 &8383550644161599492 stripped
@@ -2919,4 +2945,3 @@ SceneRoots:
   - {fileID: 90994745}
   - {fileID: 1671305775}
   - {fileID: 1661233791}
-  - {fileID: 108849825}
