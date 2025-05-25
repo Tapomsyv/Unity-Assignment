@@ -2,13 +2,13 @@
 
 public class GameFlowManager : MonoBehaviour
 {
-    [Header("Puzzle Symbol Validators")]
-    public SymbolMatchValidator player1Validator;
-    public SymbolMatchValidator player2Validator;
+    [Header("Final Symbol Validators")]
+    public SymbolMatchValidator player1Validator;   // From Player 1's socket
+    public SymbolMatchValidator player2Validator;   // From Player 2's socket
 
-    [Header("Scene Objects")]
-    public GameObject midWall;             // The wall separating the rooms
-    public BackDoorTrigger backDoorTrigger; // Reference to back door trigger script
+    [Header("World Events")]
+    public GameObject midWall;                      // The separating wall to destroy
+    public BackDoorTrigger backDoorTrigger;         // Optional: door lifting trigger
 
     private bool gameComplete = false;
 
@@ -20,15 +20,19 @@ public class GameFlowManager : MonoBehaviour
         {
             gameComplete = true;
 
-            // 💥 Destroy the mid-wall
+            Debug.Log("✅ Both players socketed correct symbols!");
+
             if (midWall != null)
+            {
                 Destroy(midWall);
+                Debug.Log("💥 Mid-wall destroyed!");
+            }
 
-            // 🔓 Unlock the back door system
             if (backDoorTrigger != null)
+            {
                 backDoorTrigger.Unlock();
-
-            Debug.Log("✅ Puzzle complete! Mid-wall destroyed. Back door enabled.");
+                Debug.Log("🔓 Back door unlocked!");
+            }
         }
     }
 }
