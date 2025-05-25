@@ -5,6 +5,7 @@ using Unity.Collections;
 using System;
 using Unity.Services.Vivox;
 using Unity.XR.CoreUtils.Bindings.Variables;
+using PlasticPipe.PlasticProtocol.Messages;
 
 namespace XRMultiplayer
 {
@@ -156,16 +157,33 @@ namespace XRMultiplayer
         /// Timer to check the voice position.
         /// </summary>
         protected float m_VoicePositionCheckTimer;
+        public GameObject OfflinePlayer;
+        public GameObject Offlinehand_L;
+        public GameObject Offlinehand_R;
 
+        public Transform Root;
+        public Transform cam;
+        public Transform hand_L;
+        public Transform hand_R;
         /// <summary>
         /// Previous position of the head.
         /// </summary>
         protected Vector3 m_PrevHeadPos;
 
+
         protected void Awake()
         {
             m_VoiceChat = FindFirstObjectByType<VoiceChatManager>();
             m_VoicePositionCheckTimer = m_VoicePositionUpdateTime;
+
+            if (OfflinePlayer == null)
+                OfflinePlayer = GameObject.Find("XR_Avatar");
+
+            if (Offlinehand_L == null)
+                Offlinehand_L = GameObject.Find("Left Hand");
+
+            if (Offlinehand_R == null)
+                Offlinehand_R = GameObject.Find("Right Hand");
         }
 
         ///<inheritdoc/>
@@ -199,12 +217,13 @@ namespace XRMultiplayer
                             m_VoiceChat.Set3DAudio(m_HeadOrigin);
                         }
                     }
+
+
                 }
             }
 
             m_VoiceAmplitudeCurrent = Mathf.Lerp(m_VoiceAmplitudeCurrent, m_VoiceAmplitudeDestination, Time.deltaTime * k_VoiceAmplitudeSpeed);
         }
-
         ///<inheritdoc/>
         protected virtual void LateUpdate()
         {
@@ -244,6 +263,9 @@ namespace XRMultiplayer
             base.OnNetworkSpawn();
             if (IsOwner)
             {
+                OfflinePlayer.SetActive(false);
+                Offlinehand_L.SetActive(false);
+                Offlinehand_R.SetActive(false);
                 // Set Local Player.
                 LocalPlayer = this;
                 XRINetworkGameManager.Instance.LocalPlayerConnected(NetworkObject.OwnerClientId);

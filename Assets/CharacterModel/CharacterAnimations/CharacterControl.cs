@@ -72,15 +72,17 @@ public class CharacterControl : MonoBehaviour
 
     void LateUpdate()
     {
-        // Apply position offset relative to headset forward
+        // Apply position offset relative to headset's orientation
         Vector3 offsetWorld = headset.forward * positionOffset.z
                             + headset.right * positionOffset.x
                             + Vector3.up * positionOffset.y;
 
         Vector3 targetPosition = headset.position + offsetWorld;
-        transform.position = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
 
-        // Face same direction as headset
+        // Apply full offset position (including Y)
+        transform.position = targetPosition;
+
+        // Face same direction as headset (ignore Y to prevent tilting)
         Vector3 lookDir = headset.forward;
         lookDir.y = 0f;
         if (lookDir.sqrMagnitude > 0.01f)

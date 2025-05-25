@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lobby.unity
     guid: be95fb34a3ca05e4791b7a4e67c9f0fc
+  - enabled: 1
+    path: Assets/Scenes/BasicScene 1.unity
+    guid: 9296634794e4cb9488359cf16d40a122
+  - enabled: 1
+    path: Assets/Scenes/BasicScene.unity
+    guid: bc761d9a86b33554f85fd11bb1f87ba3
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 13f6f87036926f94ab0417ca1b31725c
+  - enabled: 1
+    path: Assets/Scenes/multiplayerFROMSCRATCH.unity
+    guid: 2b523babcd1f9ec45b12297538544658
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e3aee76b9372917449aef639e2f74814,
       type: 2}
