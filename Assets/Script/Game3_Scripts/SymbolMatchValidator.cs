@@ -1,46 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class SymbolMatchValidator : MonoBehaviour
 {
     public XRSocketInteractor socket;
-    public Renderer[] referenceMonitors;
+    public GameObject expectedObject; // This is the correct object shown on the monitor
 
-    public bool isMatched = false;
-    public GameObject matchedObject { get; private set; }
-
-    void Start()
-    {
-        if (socket == null)
-            socket = GetComponent<XRSocketInteractor>();
-    }
+    public bool isMatched { get; private set; } = false;
 
     void Update()
     {
-        if (isMatched || socket == null || referenceMonitors == null)
-            return;
+        var selected = socket.GetOldestInteractableSelected();
 
-        var selectedInteractable = socket.GetOldestInteractableSelected();
-
-        if (selectedInteractable is XRBaseInteractable interactable)
+        // No object in socket
+        if (selected == null)
         {
-            Renderer symbolRenderer = interactable.GetComponent<Renderer>();
-            if (symbolRenderer == null) return;
+            isMatched = false;
+            return;
+        }
 
-            Texture selectedTexture = symbolRenderer.material.mainTexture;
-
-            foreach (var monitor in referenceMonitors)
-            {
-                if (monitor != null && monitor.material.mainTexture == selectedTexture)
-                {
-                    isMatched = true;
-                    matchedObject = interactable.gameObject;
-                    Debug.Log($"{name}: ✅ Correct symbol matched with monitor.");
-                    break;
-                }
-            }
+        // Compare the correct object
+        if (selected.transform.gameObject == expectedObject)
+        {
+            isMatched = true;
+        }
+        else
+        {
+            isMatched = false;
         }
     }
 }
