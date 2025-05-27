@@ -6,9 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class randomizesocket : MonoBehaviour
 {
-   // public ScoreManagerC scorescript;
-   // public socketchecker socketscript;
-
     public List<XRSocketInteractor> allSockets = new List<XRSocketInteractor>();
     public List<GameObject> indicatorBlocks = new List<GameObject>();
     public GameObject indicatorCube;
@@ -24,19 +21,15 @@ public class randomizesocket : MonoBehaviour
     public float socketCooldown = 1f;
     public float autoResetTime = 5f;
 
-    private List<GameObject> spawned = new List<GameObject>();
     private List<XRSocketInteractor> correctSockets = new List<XRSocketInteractor>();
     private List<GameObject> activeIndicatorBlocks = new List<GameObject>();
 
-    // Tracks which correct sockets currently have objects
     private HashSet<XRSocketInteractor> filledCorrectSockets = new HashSet<XRSocketInteractor>();
 
     private bool canTriggerWin = true;
 
     void Start()
     {
-        // scorescript = FindAnyObjectByType<ScoreManagerC>();
-        // Register removal event listeners
         foreach (var socket in allSockets)
         {
             socket.selectExited.AddListener(args =>
@@ -44,32 +37,25 @@ public class randomizesocket : MonoBehaviour
                 OnObjectRemoved(socket);
             });
 
+            // Spawn one cube per socket
+            Vector3 spawnPos = socket.attachTransform.position + new Vector3(0, 0.5f, 0);
+            GameObject newCube = Instantiate(cube, spawnPos, Quaternion.identity);
+            newCube.tag = "socketgame";
         }
-        startgame();
+
+        StartGame();
     }
 
-    public void startgame()
+    public void StartGame()
     {
-        ClearSocket();
-        spawncube();
-        //scorescript.resetscore();
-        GetCorrectSockets();
         ResetIndicatorCube();
+        GetCorrectSockets();
+        
 
-        // At start, all correct sockets are filled
         filledCorrectSockets = new HashSet<XRSocketInteractor>(correctSockets);
-
         canTriggerWin = true;
+
         StartCoroutine(AutoResetTimer());
-    }
-
-    public void WinningSocket()
-    {
-        if (!canTriggerWin) return;
-
-        canTriggerWin = false;
-        XRSocketInteractor winnerSocket = correctSockets[Random.Range(0, correctSockets.Count)];
-        StartCoroutine(socketfiller(winnerSocket));
     }
 
     private void GetCorrectSockets()
@@ -81,7 +67,7 @@ public class randomizesocket : MonoBehaviour
         for (int i = 0; i < allSockets.Count; i++)
             availableIndices.Add(i);
 
-        int count = Random.Range(2, 4); // Randomly select 2 or 3 sockets
+        int count = Random.Range(2, 12); // Choose 2 or 3 correct sockets
 
         for (int i = 0; i < count; i++)
         {
@@ -90,7 +76,7 @@ public class randomizesocket : MonoBehaviour
             availableIndices.RemoveAt(randomIndex);
 
             correctSockets.Add(allSockets[selectedIndex]);
-           
+
             GameObject indicator = indicatorBlocks[selectedIndex];
             if (indicator.TryGetComponent<Renderer>(out Renderer rend))
             {
@@ -100,91 +86,48 @@ public class randomizesocket : MonoBehaviour
         }
 
         Debug.Log($"Correct sockets this round: {correctSockets.Count}");
-       for (int i = 0;i < correctSockets.Count; i++)
+        foreach (var socket in correctSockets)
         {
-            Debug.Log(correctSockets[i].gameObject.name);
+            Debug.Log(socket.gameObject.name);
         }
     }
 
-    private void ClearSocket()
-    {
-        GameObject[] foundObjects = GameObject.FindGameObjectsWithTag("socketgame");
-        foreach (GameObject obj in foundObjects)
-        {
-            Destroy(obj);
-        }
-        spawned.Clear();
-
-        foreach (GameObject indicator in activeIndicatorBlocks)
-        {
-            if (indicator.TryGetComponent<Renderer>(out Renderer rend))
-            {
-                rend.material.color = Color.white;
-            }
-        }
-
-        ResetIndicatorCube();
-        activeIndicatorBlocks.Clear();
-        correctSockets.Clear();
-        filledCorrectSockets.Clear();
-    }
-
-    private void spawncube()
-    {
-        for (int i = 0; i < allSockets.Count; i++)
-        {
-            SpawnCubeForSocket(allSockets[i]);
-        }
-    }
-
-    private void SpawnCubeForSocket(XRSocketInteractor socket)
-    {
-        Vector3 spawnPos = socket.attachTransform.position + new Vector3(0, 0.5f, 0);
-        GameObject newCube = Instantiate(cube, spawnPos, Quaternion.identity);
-        newCube.tag = "socketgame";
-    }
-    void SpawnKeyAt(Vector3 position)
-    {
-        Instantiate(key, position, Quaternion.identity);
-    }
-    // Called when an object is removed from a socket
     public void OnObjectRemoved(XRSocketInteractor socket)
     {
-        if (!canTriggerWin)
-            return;
+        if (!canTriggerWin) return;
 
         if (correctSockets.Contains(socket))
         {
-            // Mark this correct socket as now empty
             filledCorrectSockets.Remove(socket);
-
-            Debug.Log($"Removed object from correct socket. Remaining: {filledCorrectSockets.Count}");
+            Debug.Log($"Removed from correct socket. Remaining: {filledCorrectSockets.Count}");
 
             if (filledCorrectSockets.Count == 0)
             {
-                // All correct sockets emptied => success
                 Debug.Log("All correct sockets cleared! You win!");
                 SetIndicatorColor(Color.green);
-                correctA.Play();
-                //scorescript.scorecounter();
-
+                correctA?.Play();
                 canTriggerWin = false;
                 SpawnKeyAt(socket.attachTransform.position);
             }
         }
         else
         {
-            // Removed from wrong socket => failure
-            Debug.Log("Removed object from wrong socket! You lose!");
+            Debug.Log("Removed from wrong socket. No reset triggered.");
             SetIndicatorColor(Color.red);
-            wrongA.Play();
-            ResetGame();
-            // You can decide to reset immediately or allow retry:
-            canTriggerWin = true;
+            wrongA?.Play();
         }
     }
 
-  
+    public XRSocketInteractor itemcheck()
+    {
+        foreach (XRSocketInteractor socket in allSockets)
+        {
+            if (!socket.hasSelection)
+                return socket;
+        }
+        return null;
+    }
+
     IEnumerator socketfiller(XRSocketInteractor winnerSocket)
     {
         XRSocketInteractor pickupSocket = itemcheck();
@@ -200,17 +143,14 @@ public class randomizesocket : MonoBehaviour
         if (correctSockets.Contains(pickupSocket))
         {
             filledCorrectSockets.Remove(pickupSocket);
-
-            Transform winnerpoint = pickupSocket.attachTransform;
-            result = Instantiate(replacementPrefabW, winnerpoint);
-            //scorescript.scorecounter();
+            result = Instantiate(replacementPrefabW, pickupSocket.attachTransform);
             SetIndicatorColor(Color.green);
-            correctA.Play();
+            correctA?.Play();
 
             if (filledCorrectSockets.Count == 0)
             {
                 yield return new WaitForSeconds(autoResetTime);
-                ResetGame();
+                StartGame();
                 yield break;
             }
         }
@@ -218,7 +158,7 @@ public class randomizesocket : MonoBehaviour
         {
             result = Instantiate(replacementPrefabL, pickupSocket.transform);
             SetIndicatorColor(Color.red);
-            wrongA.Play();
+            wrongA?.Play();
         }
 
         result.transform.localPosition = Vector3.zero;
@@ -228,17 +168,26 @@ public class randomizesocket : MonoBehaviour
         canTriggerWin = true;
     }
 
-    private void ResetGame()
+    public void WinningSocket()
     {
-        ClearSocket();
-        spawncube();
-        GetCorrectSockets();
-        ResetIndicatorCube();
-        canTriggerWin = true;
+        if (!canTriggerWin) return;
 
-        filledCorrectSockets = new HashSet<XRSocketInteractor>(correctSockets);
-        StartCoroutine(AutoResetTimer());
+        canTriggerWin = false;
+        XRSocketInteractor winnerSocket = correctSockets[Random.Range(0, correctSockets.Count)];
+        StartCoroutine(socketfiller(winnerSocket));
     }
+
+    private void ResetIndicatorCube()
+    {
+        foreach (var block in indicatorBlocks)
+        {
+            if (block.TryGetComponent<Renderer>(out Renderer rend))
+            {
+                rend.material.color = Color.white;
+            }
+        }
+    }
+
 
     private void SetIndicatorColor(Color color)
     {
@@ -248,25 +197,14 @@ public class randomizesocket : MonoBehaviour
         }
     }
 
-    private void ResetIndicatorCube()
+    private void SpawnKeyAt(Vector3 position)
     {
-        SetIndicatorColor(Color.white);
+        Instantiate(key, position, Quaternion.identity);
     }
 
-    public XRSocketInteractor itemcheck()
-    {
-        foreach (XRSocketInteractor socket in allSockets)
-        {
-            if (!socket.hasSelection)
-            {
-                return socket;
-            }
-        }
-        return null;
-    }
     private IEnumerator AutoResetTimer()
     {
         yield return new WaitForSeconds(autoResetTime);
-        ResetGame();
+        StartGame();
     }
 }

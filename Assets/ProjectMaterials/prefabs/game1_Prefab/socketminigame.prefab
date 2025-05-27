@@ -1123,7 +1123,7 @@ MonoBehaviour:
   replacementPrefabW: {fileID: 4210093314087035091, guid: d4316521ba76d6142b50c58d9f421da2,
     type: 3}
   cube: {fileID: 4210093314087035091, guid: d4316521ba76d6142b50c58d9f421da2, type: 3}
-  key: {fileID: 4210093314087035091, guid: d4316521ba76d6142b50c58d9f421da2, type: 3}
+  key: {fileID: 365518788983089616, guid: 0df0d7044ec78ab489df783805d0e8c1, type: 3}
   socketCooldown: 1
   autoResetTime: 10
 --- !u!1 &4790618687886312384
@@ -2048,6 +2048,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1127336668
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -2138,6 +2143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: socket3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1400028871
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
@@ -2230,6 +2240,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket2
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 350159747
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -2320,6 +2335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: socket4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1018721271
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
@@ -2412,6 +2432,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket2
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1709418685
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -2502,6 +2527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: socket3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2620405214
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
@@ -2594,6 +2624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket3
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1958546465
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -2684,6 +2719,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: socket4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3929905938
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
@@ -2776,6 +2816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket4
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 219635747
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -2867,6 +2912,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket2
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2549593909
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -2953,6 +3003,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3227831306
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -3038,6 +3093,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1326980911
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
@@ -3130,6 +3190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket4
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2625617979
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -3220,6 +3285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: socket2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2278691869
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
@@ -3312,6 +3382,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: socket3
       objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1996538541
+      objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}
       propertyPath: m_Name
@@ -3397,6 +3472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681999514934180729, guid: bf9f6c70123d9a74682e494ced8981c0,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2878233671
       objectReference: {fileID: 0}
     - target: {fileID: 9051182113275909066, guid: bf9f6c70123d9a74682e494ced8981c0,
         type: 3}

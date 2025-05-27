@@ -158,11 +158,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2.14, y: 3.62, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9151085962318415474
 MonoBehaviour:
@@ -178,12 +178,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 2
+    m_Bits: 4294967295
   m_Handedness: 0
   m_AttachTransform: {fileID: 9029444319739977136}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
-  m_StartingSelectedInteractable: {fileID: 0}
+  m_StartingSelectedInteractable: {fileID: 839911760874322410, guid: d4316521ba76d6142b50c58d9f421da2,
+    type: 3}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
@@ -205,11 +206,11 @@ MonoBehaviour:
   m_SocketActive: 1
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
-  m_HoverSocketSnapping: 0
-  m_SocketSnappingRadius: 0.1
+  m_HoverSocketSnapping: 1
+  m_SocketSnappingRadius: 3.01
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
-  m_TargetBoundsSize: {x: 1, y: 1, z: 1}
+  m_TargetBoundsSize: {x: 4.65, y: 3.28, z: 2.49}
 --- !u!114 &2681999514934180729
 MonoBehaviour:
   m_ObjectHideFlags: 0
